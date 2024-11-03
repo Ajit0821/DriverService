@@ -6,7 +6,10 @@ import com.driver.service.model.DriverDetails;
 import com.driver.service.payload.DriversDetailsDto;
 import com.driver.service.payload.DriversDetailsResponse;
 import com.driver.service.repository.DriverDetailsRepository;
+import com.netflix.discovery.converters.Auto;
+import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,6 +20,8 @@ public class DriverDetailsServiceImpl implements DriverDetailsService{
     private final  DriverDetailsRepository driverDetailsRepository;
     private final ModelMapper modelMapper;
 
+    @Autowired
+    ConsumerKafka consumerKafka;
     public DriverDetailsServiceImpl(DriverDetailsRepository driverDetailsRepository,ModelMapper modelMapper){
         this.driverDetailsRepository=driverDetailsRepository;
         this.modelMapper=modelMapper;
